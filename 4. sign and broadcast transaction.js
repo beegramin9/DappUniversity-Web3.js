@@ -1,6 +1,5 @@
 // 모든 transaction은 authenticity을 증명하기 위해 signed되어야 한다.
 // I want to have a private key locally, so no one from outside can see it
-const Tx = require('ethereumjs-tx').Transaction
 const Web3 = require('web3')
 const web3 = new Web3("https://ropsten.infura.io/v3/862f780f2a9943e78b9e5efeceeb730d")
 require('dotenv').config();
