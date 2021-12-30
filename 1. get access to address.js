@@ -1,4 +1,5 @@
 const Web3 = require('web3');
+// Infura is a way to get access to an Ethereum node over json-rpc
 
 // https://infura.io/dashboard/ethereum/a70072a8bba74ad2a6a7c9f434bb5853/settings
 const url = 'https://mainnet.infura.io/v3/a70072a8bba74ad2a6a7c9f434bb5853';
