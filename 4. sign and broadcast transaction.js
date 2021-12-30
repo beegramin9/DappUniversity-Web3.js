@@ -7,7 +7,7 @@ require('dotenv').config();
 const account1Address = "0x269012B275Db0e20b67911e457FCfE461e3c7eE0";
 const account2Address = "0x067883FDC654AAbf7ad4688B8e8D24A4478b1Cec";
 
-// export private key: npm i dotenv --save
+// import private key: npm i dotenv --save
 const privateKey1 = process.env.PRIVATE_KEY_1
 
 web3.eth.getBalance(account1Address, (error, balance) => {
@@ -31,12 +31,12 @@ const signedTransaction = web3.eth.accounts.signTransaction(txCredentials, priva
 
 // 3. broadcast the transaction
 signedTransaction.then(signedTx => {
-const sentTx = web3.eth.sendSignedTransaction(signedTx.raw || signedTx.rawTransaction);
-sentTx.on("receipt", receipt => {
-    console.log("receipt: ", receipt);
-    // txHash = ID of the newly made TX
-});
-sentTx.on("error", err => {
-    console.log(err.message)
-});
+    const sentTx = web3.eth.sendSignedTransaction(signedTx.raw || signedTx.rawTransaction);
+    sentTx.on("receipt", receipt => {
+        console.log("receipt: ", receipt);
+        // txHash = ID of the newly made TX
+    });
+    sentTx.on("error", err => {
+        console.log(err.message)
+    });
 });
