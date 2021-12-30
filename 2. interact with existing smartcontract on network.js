@@ -13,22 +13,24 @@ const getABIFromJSONFile = filePath => {
             resolve(JSON.parse(data));
         })
     })
-
 }
 
 getABIFromJSONFile('uniswapABI.json')
 .then(data => {
     const ABI = JSON.parse(data.result);
-    const contractAddress = "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984";
-    const contract = new web3.eth.Contract(ABI, contractAddress)
-    return contract
+    const accountAddress = "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984";
+    
+    const retrieveContract = new Promise( (resolve, reject) => {
+        const contract = new web3.eth.Contract(ABI, accountAddress)
+        resolve(contract);
+    })
+    return retrieveContract
 })
-.then(contract => new Promise( (resolve, reject) => {
-    resolve(contract.methods);
-}))
+.then(retrievedContract => retrievedContract.methods)
 .then(methods => {
     console.log(methods)
-    return methods.symbol().call()
+    const contractAddress ="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984";
+    return methods.balanceOf(contractAddress).call()
 })
 .then(result => console.log(result))
 .catch(err => console.log(err))
