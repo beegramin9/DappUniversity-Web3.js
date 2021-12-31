@@ -5,6 +5,7 @@ require('dotenv').config();
 const privateKey1 = process.env.PRIVATE_KEY_1
 const preparedSmartContract = "hexadata"
 
+
 // Create the transaction credentials
 const txCredentials = {
     data: preparedSmartContract,
